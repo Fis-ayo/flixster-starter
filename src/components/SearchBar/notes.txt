@@ -1,0 +1,50 @@
+import { useState } from "react"
+import { FaSearch } from "react-icons/fa";
+
+
+export default function SearchBar( {onSearch} ){
+    const [query, setQuery] = useState('');
+    const [showClearIcon, setShowClearIcon] = useState(false);
+
+    const handleChange = (e) =>{
+        setQuery(e.target.value);
+        setShowClearIcon(e.target.value.length > 0);
+    }
+
+    const handleSearch = () => {
+        if(query.trim()){
+            onSearch(query);
+        }
+    }
+
+    const handleKeyPress = (e) => {
+        e.preventDefault();
+        if(e.key === "Enter"){
+            handleSearch();
+        }
+    }
+
+    const handleClear = () => {
+        setQuery('');
+        onSearch('');
+        setShowClearIcon(false);
+    }
+
+    return(
+        <div className="search-container">
+                <input 
+                    type="text" 
+                    placeholder="Search for movies..."
+                    value={query} 
+                    onChange={handleChange}
+                    onKeyUp={handleKeyPress}
+                />
+                <button type="submit" onClick={handleSearch}>
+                    <FaSearch />    
+                </button>
+
+                {showClearIcon && (<button onClick={handleClear}>&times;</button>)}
+        </div>
+    )
+}
+
