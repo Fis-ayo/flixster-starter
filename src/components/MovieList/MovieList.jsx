@@ -3,26 +3,14 @@ import React, {useEffect, useState} from 'react'
 import './MovieList.css'
 import MovieCard from "./MovieCard";
 
-export default function MovieList() {
-    const [movies, setMovies] = useState([])
-    const [loading, setloading] = useState(true)
-    const [page, setPage] = useState(1)
+export default function MovieList({movies, page, setPage, setMovies, loading}) {
     const [hasMore, setHasMore] = useState(true)
-
-    useEffect(() => {
-        const getData = async () => {
-            const results = await fetchNowPlaying(page);
-            setMovies(results);
-            setloading(false);
-        }
-        getData();
-    }, [])
 
     const loadMoreMovies = async() => {
         const nextPage = page+1
         const results = await fetchNowPlaying(nextPage);
 
-        if(page >= 278) {
+        if(page >= results.total_pages) {
             setHasMore(false)
         }
         setMovies((movies) => [...movies, ...results]);
@@ -42,6 +30,10 @@ export default function MovieList() {
                 )
             )}
         </div>
+
+
+        {/* Remove the add more component from here */}
+
         { hasMore ? 
             <button className="loadMore-btn" onClick={loadMoreMovies}>Load Movies</button> : <p>No more movies</p>
         }
