@@ -1,17 +1,23 @@
 import "../MovieList/MovieCard.css"
-import React from 'react'
+import MovieModal from "../MovieModal/MovieModal";
+import { movieDetails } from "../../services/moviesAPI";
+import {useState} from 'react'
 import { FaEye, FaStar} from 'react-icons/fa'
+
 
 const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 
-export default function MovieCard({item}) {
+
+export default function MovieCard({item, onClick}) {
     return (
-        <div className="movie-card">
+        <>
+        <div className="movie-card" onClick={onClick}>
             <img 
                 className="poster" 
                 src={`${IMG_BASE_URL}${item.poster_path}`} 
-                alt={"Cover of " + item.title}/>
+                alt={"Cover of " + item.title}
+            />
 
             <div className="card-details">
                 <h2>{item.title}</h2>
@@ -21,7 +27,7 @@ export default function MovieCard({item}) {
                     <FaStar className="icon favorite-icon" />
                 </div>
             </div>
-
         </div>
+        </>
     );
 }
