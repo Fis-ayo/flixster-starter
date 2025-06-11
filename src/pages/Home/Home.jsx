@@ -49,13 +49,12 @@ export default function Home() {
 
 
     const handleSortChange = (value) => {
+        const result = movies.slice();
         if(value === "") {
             getData();
         }
-        const newArray = movies.slice();
-        let result = newArray.filter(p => p.title.toLowerCase());
-        if(value === "title"){
-            result.sort((a, b) => a.title.localeCompare(b.title));
+        else if(value === "title"){
+            result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
         }
         else if(value === "vote_average"){
             result.sort((a, b) => b.vote_average-a.vote_average);
