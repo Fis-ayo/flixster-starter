@@ -51,7 +51,26 @@ export default function Home() {
     setPlayingActive(true);
   };
 
-  const handleSortChange = (value) => {};
+
+    const handleSortChange = (value) => {
+        const result = movies.slice();
+        if(value === "") {
+            getData();
+        }
+        else if(value === "title"){
+            result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        }
+        else if(value === "vote_average"){
+            result.sort((a, b) => b.vote_average-a.vote_average);
+        }
+        else if(value === "release_date"){
+            result.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+        }
+
+        setMovies(result);
+
+    }
+
 
   return (
     <div>
@@ -75,6 +94,7 @@ export default function Home() {
       ) : (
         <p>Search for Movies</p>
       )}
+
 
       <Footer />
     </div>
