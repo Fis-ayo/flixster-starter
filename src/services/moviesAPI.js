@@ -42,7 +42,7 @@ export const movieDetails = async(movieID) => {
             throw new Error('Failed to fetch movies')
         }
         const movieData = await response.json();
-        return movieData.results;
+        return movieData;
     } catch (error) {
         console.error('Error fetching movies:', error);
         throw error;
