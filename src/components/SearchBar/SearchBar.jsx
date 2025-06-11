@@ -20,12 +20,15 @@ export default function SearchBar({onSearch, onSearchClick}){
         }
     };
 
-    // const handleKeyPress = (e) => {
-    //     if(e.key === 'Enter' && searchQuery){
-    //         setSearchQuery(searchQuery.trim())
-    //         onSearch(searchQuery.trim());
-    //     }
-    // };
+    const handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            e.preventDefault();
+            if(searchQuery) {
+                setSearchQuery(searchQuery.trim())
+                onSearch(searchQuery.trim());
+            }
+        }
+    };
 
     const handleClick = () => {
         onSearchClick();
@@ -44,7 +47,7 @@ export default function SearchBar({onSearch, onSearchClick}){
                 placeholder="Search for movies..."
                 value={searchQuery}
                 onClick={handleClick}
-                // onKeyDown={handleKeyPress}
+                onKeyDown={handleKeyPress}
                 onChange={handleSearchChange}
             />
             {showClearButton && 
