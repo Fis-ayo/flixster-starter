@@ -47,11 +47,26 @@ export default function Home() {
         setPlayingActive(true)
     }
 
+
     const handleSortChange = (value) => {
+        if(value === "") {
+            getData();
+        }
+        const newArray = movies.slice();
+        let result = newArray.filter(p => p.title.toLowerCase());
+        if(value === "title"){
+            result.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        else if(value === "vote_average"){
+            result.sort((a, b) => b.vote_average-a.vote_average);
+        }
+        else if(value === "release_date"){
+            result.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+        }
+
+        setMovies(result);
 
     }
-
-    //Error handling for where no result is found
 
     return (
         <div>
