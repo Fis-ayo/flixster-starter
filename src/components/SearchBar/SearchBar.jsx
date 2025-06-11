@@ -3,8 +3,7 @@ import {FaSearch, FaTimes} from 'react-icons/fa'
 import './SearchBar.css'
 
 
-export default function SearchBar({onSearch, onSearchClick}){
-    const [searchQuery, setSearchQuery] =  useState("")
+export default function SearchBar({onSearch, onSearchClick, searchQuery, setSearchQuery}){
     const [showClearButton, setShowClearButton] = useState(false)
 
     const handleSearchChange = (event) => {
@@ -20,12 +19,15 @@ export default function SearchBar({onSearch, onSearchClick}){
         }
     };
 
-    // const handleKeyPress = (e) => {
-    //     if(e.key === 'Enter' && searchQuery){
-    //         setSearchQuery(searchQuery.trim())
-    //         onSearch(searchQuery.trim());
-    //     }
-    // };
+    const handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            e.preventDefault();
+            if(searchQuery) {
+                setSearchQuery(searchQuery.trim())
+                onSearch(searchQuery.trim());
+            }
+        }
+    };
 
     const handleClick = () => {
         onSearchClick();
@@ -44,7 +46,7 @@ export default function SearchBar({onSearch, onSearchClick}){
                 placeholder="Search for movies..."
                 value={searchQuery}
                 onClick={handleClick}
-                // onKeyDown={handleKeyPress}
+                onKeyDown={handleKeyPress}
                 onChange={handleSearchChange}
             />
             {showClearButton && 

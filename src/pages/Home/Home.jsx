@@ -13,6 +13,7 @@ export default function Home() {
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
     const [playingActive, setPlayingActive] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("")
 
     const getData = async () =>{
             const results = await fetchNowPlaying(page);
@@ -31,7 +32,7 @@ export default function Home() {
             const results = await searchResult(query);
             setPlayingActive(true)
             if(results.length === 0){
-                console.log ("No result found")
+                console.log ("No result found") //Fix
             }else{setMovies(results);}
             setLoading(false);
         }  
@@ -43,7 +44,9 @@ export default function Home() {
 
     const handleNowPlayingClick = () => {
         getData();
-        //When now playing is clicked fix the issue where the input still holds the before data
+        if(searchQuery){
+            setSearchQuery('')
+        }
         setPlayingActive(true)
     }
 
@@ -51,13 +54,11 @@ export default function Home() {
 
     }
 
-    //Error handling for where no result is found
-
     return (
         <div>
             <Header />
             <NowPlaying onNowPlayingClick={handleNowPlayingClick}/>
-            <SearchBar onSearch={handleSearch} onSearchClick={handleSearchClick}/>
+            <SearchBar onSearch={handleSearch} onSearchClick={handleSearchClick} setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
             <SortDropDown onSortChange={handleSortChange}/>
             {playingActive ?
             <MovieList movies={movies} page={page} setPage = {setPage} setMovies={setMovies} loading={loading}/>:
