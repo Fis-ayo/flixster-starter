@@ -1,10 +1,7 @@
-export default function NowPlaying ({onNowPlayingClick}){
+export default function NowPlaying({ onNowPlayingClick }) {
+  const handleClick = () => {
+    onNowPlayingClick();
+  };
 
-    const handleClick = () => {
-        onNowPlayingClick();
-    }
-
-    return (
-        <button onClick={handleClick}>Now Playing</button>
-    )
+  return <button onClick={handleClick}>Now Playing</button>;
 }

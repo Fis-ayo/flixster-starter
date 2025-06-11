@@ -8,6 +8,15 @@ import { FaEye, FaStar} from 'react-icons/fa'
 const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 
+export default function MovieCard({ item }) {
+  return (
+    <div className="movie-card">
+      <img
+        className="poster"
+        src={`${IMG_BASE_URL}${item.poster_path}`}
+        alt={"Cover of " + item.title}
+      />
+
 
 export default function MovieCard({item, onClick}) {
     return (
@@ -31,3 +40,4 @@ export default function MovieCard({item, onClick}) {
         </>
     );
 }
+
