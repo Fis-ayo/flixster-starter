@@ -1,8 +1,10 @@
+import "./Footer.css"
+
 
 export default function Footer(){
     return (
         <div className="footer-container">
-            <h1>Footer Here</h1>
+            <p>&copy; Mercy Akinyemi MetaU 2025</p>
         </div>
     )
 }
