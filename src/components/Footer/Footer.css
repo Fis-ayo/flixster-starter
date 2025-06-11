@@ -1,5 +1,9 @@
 .footer-container {
     height: 100px;
     width: 100%;
-    background-color: aliceblue;
+    background-color: rgb(7, 41, 25);
+}
+
+.footer-container p{
+    color: white;
 }
