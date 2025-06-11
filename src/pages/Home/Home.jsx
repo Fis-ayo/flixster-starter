@@ -13,6 +13,7 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [playingActive, setPlayingActive] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
 
   const getData = async () => {
     const results = await fetchNowPlaying(page);
@@ -31,7 +32,7 @@ export default function Home() {
       const results = await searchResult(query);
       setPlayingActive(true);
       if (results.length === 0) {
-        console.log("No result found"); //Fix
+        setErrorMessage("No results")
       } else {
         setMovies(results);
       }
@@ -92,7 +93,7 @@ export default function Home() {
           loading={loading}
         />
       ) : (
-        <p>Search for Movies</p>
+        <p>"Search for Movies"</p>
       )}
 
 
