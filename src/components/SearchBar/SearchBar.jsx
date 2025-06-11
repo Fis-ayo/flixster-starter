@@ -3,8 +3,7 @@ import {FaSearch, FaTimes} from 'react-icons/fa'
 import './SearchBar.css'
 
 
-export default function SearchBar({onSearch, onSearchClick}){
-    const [searchQuery, setSearchQuery] =  useState("")
+export default function SearchBar({onSearch, onSearchClick, searchQuery, setSearchQuery}){
     const [showClearButton, setShowClearButton] = useState(false)
 
     const handleSearchChange = (event) => {
