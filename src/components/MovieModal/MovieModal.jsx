@@ -1,4 +1,5 @@
 import "./MovieModal.css"
+import MovieTrailer from "./MovieTrailer";
 
 const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -23,6 +24,7 @@ export default function MovieModal({movie, onClose}) {
             </div>
             <p>{movie.overview}</p>
             <div className="movie-down-content">
+                <MovieTrailer movie={movie}/>
             </div>
         </div>
     </div>

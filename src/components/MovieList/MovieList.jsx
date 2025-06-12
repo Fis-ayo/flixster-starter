@@ -1,12 +1,13 @@
-import { fetchNowPlaying, movieDetails } from "../../services/moviesAPI";
+import { fetchNowPlaying, movieDetails, movieTrailer } from "../../services/moviesAPI";
 import MovieModal from "../MovieModal/MovieModal";
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './MovieList.css'
 import MovieCard from "./MovieCard";
 
 export default function MovieList({ movies, page, setPage, setMovies, loading }) {
     const [hasMore, setHasMore] = useState(true)
     const [clickedMovie, setClickedMovie] = useState(null)
+
 
     const loadMoreMovies = async () => {
         const nextPage = page + 1
@@ -19,10 +20,19 @@ export default function MovieList({ movies, page, setPage, setMovies, loading })
         setPage(nextPage);
     }
 
-    const handleMovieClick = async(movieID) => {
-        const results = await movieDetails(movieID)
-        setClickedMovie(results)
+    const handleMovieClick = async (movieID) => {
+        const [details, videoResults] = await Promise.all([
+            movieDetails(movieID), movieTrailer(movieID) ]);
+        const trailer = videoResults?.results?.find(v => v.type === "Trailer" && v.site === "YouTube");
+        
+        const fullMovieData = {
+            ...details,
+            trailerKey: trailer ? trailer.key : null 
+        };
+
+        setClickedMovie(fullMovieData);
     }
+
 
 
     if (loading) return <p>Loading movies...</p>
@@ -33,7 +43,7 @@ export default function MovieList({ movies, page, setPage, setMovies, loading })
                 {movies.map((movie, index) => (
                     <MovieCard
                         key={`${movie.id}-${index}`}
-                        item={movie} 
+                        item={movie}
                         onClick={() => handleMovieClick(movie.id)}
                     />
                 )
@@ -47,8 +57,8 @@ export default function MovieList({ movies, page, setPage, setMovies, loading })
                 <button className="loadMore-btn" onClick={loadMoreMovies}>Load Movies</button> : <p>No more movies</p>
             }
 
-            {clickedMovie && 
-            (<MovieModal movie={clickedMovie} onClose={() => setClickedMovie(null)}/>)
+            {clickedMovie &&
+                (<MovieModal movie={clickedMovie} onClose={() => setClickedMovie(null)} />)
             }
         </>
     )
