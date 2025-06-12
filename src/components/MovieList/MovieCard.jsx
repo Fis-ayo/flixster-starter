@@ -65,7 +65,7 @@ export default function MovieCard({
                         {isSeen? <FaEye /> : <FaEyeSlash />}
                     </div>
                     <div onClick={toggleFavorite} className="icon">
-                        {isFavorite ? <FaStar /> : <FaRegStar />}
+                        {isFavorite ? <FaRegStar /> : <FaStar />}
                     </div>
                 </div>
             </div>
