@@ -4,7 +4,7 @@ const DETAIL_URL = 'https://api.themoviedb.org/3/movie/'
 
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
-export const fetchNowPlaying = async (page) => {
+export const fetchNowPlaying = async (page=1) => {
   const url = `${BASE_URL}api_key=${apiKey}&page=${page}`;
   try {
     const response = await fetch(url);
@@ -48,4 +48,20 @@ export const movieDetails = async(movieID) => {
         throw error;
     }
 }
+
+export const movieTrailer = async(movieID) => {
+    const url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`
+    try {
+        const response = await fetch(url);
+        if(!response.ok){
+            throw new Error('Failed to fetch movies')
+        }
+        const trailerResult = await response.json();
+        return trailerResult;
+    } catch (error) {
+        console.error('Error fetching movies:', error);
+        throw error;
+    }
+}
+
 
