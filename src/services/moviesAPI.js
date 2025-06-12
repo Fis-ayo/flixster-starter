@@ -4,7 +4,7 @@ const DETAIL_URL = 'https://api.themoviedb.org/3/movie/'
 
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
-export const fetchNowPlaying = async (page = 1) => {
+export const fetchNowPlaying = async (page) => {
   const url = `${BASE_URL}api_key=${apiKey}&page=${page}`;
   try {
     const response = await fetch(url);

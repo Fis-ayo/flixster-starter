@@ -15,10 +15,11 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [errorMessage, setErrorMessage] = useState("")
 
-  const getData = async () => {
-    const results = await fetchNowPlaying(page);
+  const getData = async (specifiedPage) => {
+    const results = await fetchNowPlaying(specifiedPage || page);
     setMovies(results);
     setLoading(false);
+    if (specifiedPage) setPage(specifiedPage);
   };
 
   useEffect(() => {
@@ -41,11 +42,14 @@ export default function Home() {
   };
 
   const handleSearchClick = () => {
+    setErrorMessage("")
     setPlayingActive(false);
   };
 
   const handleNowPlayingClick = () => {
-    getData();
+    setErrorMessage("")
+    
+    getData(1);
     if (searchQuery) {
       setSearchQuery("");
     }
@@ -55,19 +59,21 @@ export default function Home() {
 
     const handleSortChange = (value) => {
         const result = movies.slice();
-        if(value === "") {
+        switch(value){
+          case "":
             getData();
-        }
-        else if(value === "title"){
+            break;
+          case "title":
             result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
-        }
-        else if(value === "vote_average"){
+            break;
+          case "vote_average":
             result.sort((a, b) => b.vote_average-a.vote_average);
-        }
-        else if(value === "release_date"){
+            break;
+          case "release_date":
             result.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
-        }
+            break;
 
+        }
         setMovies(result);
 
     }
@@ -84,15 +90,16 @@ export default function Home() {
         searchQuery={searchQuery}
       />
       <SortDropDown onSortChange={handleSortChange} />
-      {playingActive ? (
-        <MovieList
+      {playingActive ? 
+      (errorMessage ? <p>{errorMessage}</p> :
+      (<MovieList
           movies={movies}
           page={page}
           setPage={setPage}
           setMovies={setMovies}
           loading={loading}
         />
-      ) : (
+      )) : (
         <p>"Search for Movies"</p>
       )}
 
