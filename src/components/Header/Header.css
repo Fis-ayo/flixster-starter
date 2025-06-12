@@ -4,12 +4,22 @@
     justify-content: space-between;
     top: 0;
     left: 0;
-    background: #023d2d;
+    background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    color: white;
+    color: #023d2d;
     margin: 20px;
     font-size: 20px;
 }
+
+.menu {
+    color: #023d2d;
+    font-weight: bolder;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+    
