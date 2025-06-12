@@ -1,11 +1,9 @@
 import { fetchNowPlaying, searchResult } from "../../services/moviesAPI";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import MovieList from "../../components/MovieList/MovieList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortDropDown from "../../components/SortDropDown/SortDropDown";
 import NowPlaying from "../../components/SearchBar/NowPlaying";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -81,7 +79,6 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
       <NowPlaying onNowPlayingClick={handleNowPlayingClick} />
       <SearchBar
         onSearch={handleSearch}
@@ -104,7 +101,6 @@ export default function Home() {
       )}
 
 
-      <Footer />
     </div>
   );
 }
