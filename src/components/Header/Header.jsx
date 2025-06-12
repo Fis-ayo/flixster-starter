@@ -8,7 +8,7 @@ export default function Header() {
 
   const onMenuClick = () => {
     setClickedMenu(true);
-  }
+  };
 
   return (
     <>
@@ -16,7 +16,7 @@ export default function Header() {
         <h1>🎞️Flixster</h1>
         <FaBars className="menu" onClick={onMenuClick} />
       </div>
-      {clickedMenu && <SideBar onMenuClose={() => setClickedMenu(false)}/>}
+      {clickedMenu && <SideBar onMenuClose={() => setClickedMenu(false)} />}
     </>
   );
 }
