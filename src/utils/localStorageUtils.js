@@ -13,8 +13,6 @@ const saveInList = (key, item) => {
 };
 
 const removeFromList = (key, id) => {
-  // console.log("getMovieList(key)", getMovieList(key))
-  console.log(`key: ${key}, id: ${id}`)
   const newList = getMovieList(key).filter((item) => item.id !== id);
   localStorage.setItem(key, JSON.stringify(newList));
 };

@@ -24,8 +24,6 @@ export default function MovieCard({
   const toggleWatched = (e) => {
     e.stopPropagation();
     if (isSeen) {
-      console.log("toggleWatched item:", item);
-      console.log("toggleWatched item.id:", item.id)
       watchedUtils.remove(item.id);
       unWatched?.();
     } else {
