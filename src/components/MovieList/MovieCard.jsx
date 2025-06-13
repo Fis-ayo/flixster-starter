@@ -9,7 +9,7 @@ export default function MovieCard({
   item,
   onClick,
   isFavorited = false,
-  unFavorited,
+unFavorited = () => {},
   isWatched = false,
   unWatched,
 }) {
