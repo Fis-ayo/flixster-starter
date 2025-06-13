@@ -45,7 +45,7 @@ unFavorited = () => {},
     if (isFavorite) {
     
       favoritesUtils.remove(item.id);
-      unFavorited?.();
+      unFavorited();
     } else {
       const movie = {
         id: item.id,
