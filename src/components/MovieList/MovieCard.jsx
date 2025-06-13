@@ -43,8 +43,7 @@ export default function MovieCard({
   const toggleFavorite = (e) => {
     e.stopPropagation();
     if (isFavorite) {
-      console.log("toggleFavorite item:", item);
-      console.log("toggleFavorite item.id:", item.id)
+    
       favoritesUtils.remove(item.id);
       unFavorited?.();
     } else {
