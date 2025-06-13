@@ -23,13 +23,15 @@ export default function Watched() {
       ) : (
         watched.map((movie) => {
           return (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              item={movie}
-              isWatched={true}
-              unWatched={() => handleUnWatched(movie.id)}
-            />
+            <div className="movies-container">
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                item={movie}
+                isWatched={true}
+                unWatched={() => handleUnWatched(movie.id)}
+              />
+            </div>
           );
         })
       )};
