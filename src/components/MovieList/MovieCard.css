@@ -41,7 +41,7 @@
 .icon {
   font-size: 1rem;
   transition: transform 0.2s ease;
-  color: var(--main-color);
+  color: var(--light-color);
 }
 
 .icon:hover{
