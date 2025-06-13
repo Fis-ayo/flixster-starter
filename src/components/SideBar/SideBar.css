@@ -1,0 +1,46 @@
+.menu-overlay {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.menu-icon {
+  color: #023d2d;
+  font-weight: bolder;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.menu-close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.menu-close:hover,
+.menu-close:focus {
+  color: #023d2d;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-detail {
+  list-style: none;
+}
