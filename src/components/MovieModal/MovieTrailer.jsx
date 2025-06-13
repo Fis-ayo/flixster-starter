@@ -1,3 +1,5 @@
+import "./MovieTrailer.css"
+
 export default function MovieTrailer({ movie }) {
   const movieTrailerNotFound = () => {
     return (

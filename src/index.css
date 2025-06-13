@@ -4,6 +4,16 @@ body {
   background-color: #f4f4f4;
 }
 
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 button {
   background-color: #282c34;
   color: white;

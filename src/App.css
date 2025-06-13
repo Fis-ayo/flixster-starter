@@ -1,3 +1,15 @@
+:root {
+  --main-color: #519f3a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #020202, #0d0d0d);
+  color: #f1f1f1;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
 }

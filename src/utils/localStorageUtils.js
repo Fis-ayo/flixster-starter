@@ -24,7 +24,7 @@ const isInList = (key, id) => {
 export const favoritesUtils = {
   get: () => getMovieList("favorites"),
   save: (item) => saveInList("favorites", item),
-  remove: (id) => removeFromList("favorties", id),
+  remove: (id) => removeFromList("favorites", id),
   exist: (id) => isInList("favorites", id),
 };
 

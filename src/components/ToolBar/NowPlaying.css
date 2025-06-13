@@ -1,0 +1,15 @@
+.nowplaying-btn {
+    background-color: var(--main-color);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.nowplaying-btn:hover{
+    background-color: #ffffff;
+    color: var(--main-color);
+}

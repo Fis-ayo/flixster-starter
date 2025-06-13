@@ -1,6 +1,6 @@
 import "../MovieList/MovieCard.css";
 import { useState, useEffect } from "react";
-import { FaEyeSlash, FaEye, FaRegStar, FaStar } from "react-icons/fa";
+import { FaEyeSlash, FaRegStar, FaStar, FaCheckCircle } from "react-icons/fa";
 import { favoritesUtils, watchedUtils } from "../../utils/localStorageUtils";
 
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
@@ -9,7 +9,7 @@ export default function MovieCard({
   item,
   onClick,
   isFavorited = false,
-  unFavorited,
+unFavorited = () => {},
   isWatched = false,
   unWatched,
 }) {
@@ -41,8 +41,9 @@ export default function MovieCard({
   const toggleFavorite = (e) => {
     e.stopPropagation();
     if (isFavorite) {
+    
       favoritesUtils.remove(item.id);
-      unFavorited?.();
+      unFavorited();
     } else {
       const movie = {
         id: item.id,
@@ -58,24 +59,26 @@ export default function MovieCard({
   return (
     <>
       <div className="movie-card">
-        <img
-          className="poster"
-          src={`${IMG_BASE_URL}${item.poster_path}`}
-          alt={"Cover of " + item.title}
-          onClick={onClick}
-        />
+        <div className="image-wrapper">
+          <img
+            className="poster"
+            src={`${IMG_BASE_URL}${item.poster_path}`}
+            alt={"Cover of " + item.title}
+            onClick={onClick}
+          />
+          <div className="card-icons">
+            <div onClick={toggleWatched} className="icon watched-icon">
+              {isSeen ? <FaCheckCircle /> : <FaEyeSlash />}
+            </div>
+            <div onClick={toggleFavorite} className="icon favorite-icon">
+              {isFavorite ? <FaStar /> : <FaRegStar />}
+            </div>
+          </div>
+        </div>
 
         <div className="card-details">
           <h2>{item.title}</h2>
           <p>Rating: {item.vote_average}</p>
-          <div className="card-icons">
-            <div onClick={toggleWatched} className="icon">
-              {isSeen ? <FaEye /> : <FaEyeSlash />}
-            </div>
-            <div onClick={toggleFavorite} className="icon">
-              {isFavorite ? <FaStar /> : <FaRegStar />}
-            </div>
-          </div>
         </div>
       </div>
     </>
