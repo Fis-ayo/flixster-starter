@@ -69,10 +69,10 @@ export default function MovieCard({
           <h2>{item.title}</h2>
           <p>Rating: {item.vote_average}</p>
           <div className="card-icons">
-            <div onClick={toggleWatched} className="icon">
+            <div onClick={toggleWatched} className="icon watched-icon">
               {isSeen ? <FaEye /> : <FaEyeSlash />}
             </div>
-            <div onClick={toggleFavorite} className="icon">
+            <div onClick={toggleFavorite} className="icon favorite-icon">
               {isFavorite ? <FaStar /> : <FaRegStar />}
             </div>
           </div>
