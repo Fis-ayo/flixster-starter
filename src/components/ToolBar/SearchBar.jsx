@@ -6,6 +6,7 @@ export default function SearchBar({
   onSearchClick,
   searchQuery,
   setSearchQuery,
+  onClose
 }) {
 
   const handleSearchChange = (event) => {
@@ -37,6 +38,7 @@ export default function SearchBar({
   const handleClear = (e) => {
     setSearchQuery("");
     onSearch("");
+    onClose();
   };
 
   return (

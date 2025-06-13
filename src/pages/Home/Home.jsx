@@ -88,6 +88,7 @@ export default function Home() {
             onSearchClick={handleSearchClick}
             setSearchQuery={setSearchQuery}
             searchQuery={searchQuery}
+            onClose = {handleNowPlayingClick}
           />
           <SortDropDown onSortChange={handleSortChange} />
         </div>
