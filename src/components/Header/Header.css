@@ -2,20 +2,22 @@
   position: sticky;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
   top: 0;
-  left: 0;
-  background: white;
+  z-index: 999;
+  background: linear-gradient(to right, #0d0d0d, #1a1a1a);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-  color: #023d2d;
-  margin: 20px;
-  font-size: 20px;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .menu {
-  color: #023d2d;
+  color: var(--main-color);
   font-weight: bolder;
   font-size: 20px;
   margin: 20px;
