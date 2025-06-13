@@ -42,7 +42,6 @@ export default function MovieList({
       ...details,
       trailerKey: trailer ? trailer.key : null,
     };
-
     setClickedMovie(fullMovieData);
   };
 
