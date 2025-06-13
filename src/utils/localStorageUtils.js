@@ -13,6 +13,8 @@ const saveInList = (key, item) => {
 };
 
 const removeFromList = (key, id) => {
+  // console.log("getMovieList(key)", getMovieList(key))
+  console.log(`key: ${key}, id: ${id}`)
   const newList = getMovieList(key).filter((item) => item.id !== id);
   localStorage.setItem(key, JSON.stringify(newList));
 };
@@ -24,7 +26,7 @@ const isInList = (key, id) => {
 export const favoritesUtils = {
   get: () => getMovieList("favorites"),
   save: (item) => saveInList("favorites", item),
-  remove: (id) => removeFromList("favorties", id),
+  remove: (id) => removeFromList("favorites", id),
   exist: (id) => isInList("favorites", id),
 };
 
