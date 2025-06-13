@@ -19,11 +19,11 @@ export default function Favorites() {
   return (
     <div>
       <h2>Favorites</h2>
-      {favorites.length === 0 ? (
-        <p>No liked items yet</p>
-      ) : (
-        favorites.map((movie) => (
-          <div className="movies-container">
+      <div className="movies-container">
+        {favorites.length === 0 ? (
+          <p>No liked items yet</p>
+        ) : (
+          favorites.map((movie) => (
             <MovieCard
               key={movie.id}
               id={movie.id}
@@ -31,9 +31,8 @@ export default function Favorites() {
               isFavorited={true}
               unFavorited={() => handleUnFavorited(movie.id)}
             />
-          </div>
-        ))
-      )}
+          ))
+        )}</div>
     </div>
   );
 }

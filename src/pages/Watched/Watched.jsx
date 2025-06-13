@@ -18,12 +18,13 @@ export default function Watched() {
   return (
     <div>
       <h2>Watched List</h2>
-      {watched.length === 0 ? (
-        <p>Add to Watched List</p>
-      ) : (
-        watched.map((movie) => {
-          return (
-            <div className="movies-container">
+      <div className="movies-container">
+        {watched.length === 0 ? (
+          <p>Add to Watched List</p>
+        ) : (
+          watched.map((movie) => {
+            return (
+
               <MovieCard
                 key={movie.id}
                 id={movie.id}
@@ -31,11 +32,10 @@ export default function Watched() {
                 isWatched={true}
                 unWatched={() => handleUnWatched(movie.id)}
               />
-            </div>
-          );
-        })
-      )}
-      ;
+            );
+          })
+        )}
+        </div>
     </div>
   );
 }
