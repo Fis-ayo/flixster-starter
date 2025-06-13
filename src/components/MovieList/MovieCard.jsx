@@ -1,6 +1,6 @@
 import "../MovieList/MovieCard.css";
 import { useState, useEffect } from "react";
-import { FaEyeSlash, FaEye, FaRegStar, FaStar } from "react-icons/fa";
+import { FaEyeSlash, FaRegStar, FaStar, FaCheckCircle } from "react-icons/fa";
 import { favoritesUtils, watchedUtils } from "../../utils/localStorageUtils";
 
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
@@ -24,6 +24,8 @@ export default function MovieCard({
   const toggleWatched = (e) => {
     e.stopPropagation();
     if (isSeen) {
+      console.log("toggleWatched item:", item);
+      console.log("toggleWatched item.id:", item.id)
       watchedUtils.remove(item.id);
       unWatched?.();
     } else {
@@ -41,6 +43,8 @@ export default function MovieCard({
   const toggleFavorite = (e) => {
     e.stopPropagation();
     if (isFavorite) {
+      console.log("toggleFavorite item:", item);
+      console.log("toggleFavorite item.id:", item.id)
       favoritesUtils.remove(item.id);
       unFavorited?.();
     } else {
@@ -58,24 +62,26 @@ export default function MovieCard({
   return (
     <>
       <div className="movie-card">
-        <img
-          className="poster"
-          src={`${IMG_BASE_URL}${item.poster_path}`}
-          alt={"Cover of " + item.title}
-          onClick={onClick}
-        />
-
-        <div className="card-details">
-          <h2>{item.title}</h2>
-          <p>Rating: {item.vote_average}</p>
+        <div className="image-wrapper">
+          <img
+            className="poster"
+            src={`${IMG_BASE_URL}${item.poster_path}`}
+            alt={"Cover of " + item.title}
+            onClick={onClick}
+          />
           <div className="card-icons">
             <div onClick={toggleWatched} className="icon watched-icon">
-              {isSeen ? <FaEye /> : <FaEyeSlash />}
+              {isSeen ? <FaCheckCircle /> : <FaEyeSlash />}
             </div>
             <div onClick={toggleFavorite} className="icon favorite-icon">
               {isFavorite ? <FaStar /> : <FaRegStar />}
             </div>
           </div>
+        </div>
+
+        <div className="card-details">
+          <h2>{item.title}</h2>
+          <p>Rating: {item.vote_average}</p>
         </div>
       </div>
     </>
