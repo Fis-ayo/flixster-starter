@@ -1,9 +1,10 @@
 import { fetchNowPlaying, searchResult } from "../../services/moviesAPI";
 import MovieList from "../../components/MovieList/MovieList";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import SortDropDown from "../../components/SortDropDown/SortDropDown";
-import NowPlaying from "../../components/SearchBar/NowPlaying";
+import SearchBar from "../../components/ToolBar/SearchBar";
+import SortDropDown from "../../components/ToolBar/SortDropDown/SortDropDown";
+import NowPlaying from "../../components/ToolBar/NowPlaying";
 import { useState, useEffect } from "react";
+import "./Home.css"
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -79,14 +80,18 @@ export default function Home() {
 
   return (
     <div>
-      <NowPlaying onNowPlayingClick={handleNowPlayingClick} />
-      <SearchBar
-        onSearch={handleSearch}
-        onSearchClick={handleSearchClick}
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
-      <SortDropDown onSortChange={handleSortChange} />
+      <div className="toolbar-container">
+        <NowPlaying onNowPlayingClick={handleNowPlayingClick} />
+        <div className="toolbar-actions">
+          <SearchBar
+            onSearch={handleSearch}
+            onSearchClick={handleSearchClick}
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
+          />
+          <SortDropDown onSortChange={handleSortChange} />
+        </div>
+      </div>
       {playingActive ? (
         errorMessage ? (
           <p>{errorMessage}</p>
