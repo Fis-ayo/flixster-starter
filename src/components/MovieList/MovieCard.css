@@ -1,20 +1,33 @@
 .movie-card {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: transparent;
+  width: 100%;
+  max-width: 200px;
   height: 55vh;
-  margin: 10px;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.4);
+}
+
+.movie-card:hover{
+  transform: scale(1.05);
 }
 
 .poster {
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   object-fit: cover;
   cursor: pointer;
 }
 .card-details {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
   flex: 1;
 }
 
