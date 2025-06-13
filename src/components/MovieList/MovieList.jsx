@@ -4,7 +4,7 @@ import {
   movieTrailer,
 } from "../../services/moviesAPI";
 import MovieModal from "../MovieModal/MovieModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./MovieList.css";
 import MovieCard from "./MovieCard";
 
