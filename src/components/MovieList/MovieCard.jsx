@@ -9,7 +9,7 @@ export default function MovieCard({
   item,
   onClick,
   isFavorited = false,
-  unFavorited,
+unFavorited = () => {},
   isWatched = false,
   unWatched,
 }) {
@@ -43,7 +43,7 @@ export default function MovieCard({
     if (isFavorite) {
     
       favoritesUtils.remove(item.id);
-      unFavorited?.();
+      unFavorited();
     } else {
       const movie = {
         id: item.id,
