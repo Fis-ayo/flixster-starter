@@ -1,0 +1,18 @@
+.sort-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 180px;
+    min-width: 120px;
+}
+
+.sort-dropdown {
+    background-color: #252525;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    max-width: 120px;
+    cursor: pointer;
+    flex-shrink: 1;
+}
