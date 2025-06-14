@@ -12,7 +12,7 @@ Currently, two official plugins are available:
 
 Submitted by: **NAME**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **25** hours spent in total
 
 Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-4fqq.onrender.com)
 
